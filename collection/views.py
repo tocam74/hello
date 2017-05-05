@@ -1,6 +1,6 @@
 from django.shortcuts import render
+from collection.models import Loonatic
 
 def index(request):
-    number = 6
-    thing = "Thing name"
-    return render(request, 'index.html', {'number': number, 'thing': thing,})
+    loonatics = Loonatic.objects.all()
+    return render(request, 'index.html', {'loonatics': loonatics,})
