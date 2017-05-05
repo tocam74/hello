@@ -6,7 +6,11 @@
 
 {% block content %}
     {% for loonatic in loonatics %}
-        <h2>{{ loonatic.name }}</h2>
+        <h2>
+            <a href="{% url 'loonatic_detail' slug=loonatic.slug %}">
+                {{ loonatic.name }}
+            </a>
+        </h2
         <p>{{ loonatic.description }}</p>
     {% endfor %}
 {% endblock content %}

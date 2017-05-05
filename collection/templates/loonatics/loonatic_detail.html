@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ loonatic.name }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ loonatic.name }}</h1>
+    <p>{{ loonatic.description }}</p>
+{% endblock content %}
