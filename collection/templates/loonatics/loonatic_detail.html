@@ -7,4 +7,5 @@
 {% block content %}
     <h1>{{ loonatic.name }}</h1>
     <p>{{ loonatic.description }}</p>
+    <a href="{% url 'edit_loonatic' slug=loonatic.slug %}">Edit me!</a>
 {% endblock content %}

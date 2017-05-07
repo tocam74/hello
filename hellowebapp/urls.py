@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
     url(r'^loonatics/(?P<slug>[-\w]+)/$', views.loonatic_detail, name='loonatic_detail'),
+    url(r'^loonatics/(?P<slug>[-\w]+)/edit/$', views.edit_loonatic, name='edit_loonatic'),
     url(r'^admin/', admin.site.urls),
 ]
