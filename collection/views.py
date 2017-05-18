@@ -43,3 +43,12 @@ def create_loonatic(request):
     else:
         form = form_class()
     return render(request, 'loonatics/create_loonatic.html', {'form': form,})
+
+def browse_by_name(request, initial=None):
+    if initial:
+        loonatics = Loonatic.objects.filter(name__istartswith=initial)
+        loonatics = loonatics.order_by('name')
+    else:
+        loonatics = Loonatic.objects.all().order_by('name')
+
+    return render(request, 'search/search.html', {'initial': initial, 'loonatics': loonatics,})
