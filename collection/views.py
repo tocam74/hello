@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from collection.models import Loonatic
-from collection.forms import LoonaticForm
+from collection.forms import LoonaticForm, ContactForm
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -52,3 +52,8 @@ def browse_by_name(request, initial=None):
         loonatics = Loonatic.objects.all().order_by('name')
 
     return render(request, 'search/search.html', {'initial': initial, 'loonatics': loonatics,})
+
+def contact(request):
+    form_class = ContactForm
+
+    return render(request, 'contact.html', {'form': form_class,})
