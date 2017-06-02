@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from collection.models import Loonatic
+from collection.models import Loonatic, Social
 
 class LoonaticAdmin(admin.ModelAdmin):
     model = Loonatic
@@ -9,3 +9,9 @@ class LoonaticAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Loonatic, LoonaticAdmin)
+
+class SocialAdmin(admin.ModelAdmin):
+    model = Social
+    list_display = ('network', 'username',)
+
+admin.site.register(Social, SocialAdmin)
