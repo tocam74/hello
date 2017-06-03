@@ -7,6 +7,7 @@ from django.http import Http404
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from django.template import Context
+from django.core.mail import mail_admins
 
 def index(request):
     loonatics = Loonatic.objects.all()
@@ -43,6 +44,7 @@ def create_loonatic(request):
             loonatic.user = request.user
             loonatic.slug = slugify(loonatic.name)
             loonatic.save()
+            mail_admins("Kreiran ludjak", "Imamo jos jednog ludjaka")
             return redirect('loonatic_detail', slug=loonatic.slug)
     else:
         form = form_class()
