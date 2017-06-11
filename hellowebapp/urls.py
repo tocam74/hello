@@ -26,6 +26,17 @@ from django.contrib.auth.views import (
     password_change_done
 )
 from collection.backends import MyRegistrationView
+from django.contrib.sitemaps.views import sitemap
+from collection.sitemap import (
+    LoonaticSitemap,
+    StaticSitemap,
+    HomepageSitemap,
+)
+sitemaps = {
+    'loonatics': LoonaticSitemap,
+    'static': StaticSitemap,
+    'homepage': HomepageSitemap,
+}
 
 urlpatterns = [
     url(r'^$', views.index, name='home'),
@@ -47,4 +58,5 @@ urlpatterns = [
     url(r'^accounts/create_loonatic/$', views.create_loonatic, name='registration_create_loonatic'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

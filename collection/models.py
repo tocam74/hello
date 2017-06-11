@@ -14,6 +14,9 @@ class Loonatic(Timestamp):
     slug = models.SlugField(unique=True)
     user = models.OneToOneField(User, null=True, blank=True)
 
+    def get_absolute_url(self):
+        return "/loonatics/%s/" % self.slug
+
 class Social(models.Model):
     SOCIAL_TYPES = (
         ('twitter', 'Twitter'),
