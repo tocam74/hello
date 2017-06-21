@@ -14,6 +14,9 @@ class Loonatic(Timestamp):
     slug = models.SlugField(unique=True)
     user = models.OneToOneField(User, null=True, blank=True)
 
+    def __unicode__(self):
+        return self.name
+
     def get_absolute_url(self):
         return "/loonatics/%s/" % self.slug
 
@@ -31,3 +34,10 @@ class Social(models.Model):
 
     class Meta:
         verbose_name_plural = "Social media links"
+
+def get_image_path(instance, filename):
+    return '/'.join(['loonatic_images', instance.loonatic.slug, filename])
+
+class Upload(Timestamp):
+    loonatic = models.ForeignKey(Loonatic, related_name="uploads")
+    image = models.ImageField(upload_to=get_image_path)
