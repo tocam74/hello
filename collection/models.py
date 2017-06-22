@@ -14,7 +14,7 @@ class Loonatic(Timestamp):
     slug = models.SlugField(unique=True)
     user = models.OneToOneField(User, null=True, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def get_absolute_url(self):
